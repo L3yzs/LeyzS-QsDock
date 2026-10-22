@@ -1,0 +1,16 @@
+{
+  "lang": "en",
+  "name": "",
+  "avatar": "",
+  "dockOutputs": [],
+  "wallpaperDir": "~/Pictures/Wallpapers",
+  "wallpaperScript": "",
+  "prayer": {
+    "enabled": false,
+    "country": "Turkey",
+    "method": 13,
+    "cities": [
+      "Istanbul"
+    ]
+  }
+}

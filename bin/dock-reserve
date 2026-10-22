@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# LeyzS: ekranin ayrilmis alanini (monitors.lua -> reserved_area) secili bara gore ayarlar.
+#   Dock secili + "sabit" (her zaman gorunur) -> top 0, left 45
+#   Dock secili + "gizli" (oto gizle)         -> top 0, left 0
+#   Baska bar (qsnotch, qsbar, waybar)        -> top 45, left 0   (eski hali)
+#   Dock yatay (alt orta) + "sabit"            -> top 0, bottom 60
+# Kullanim: dock-reserve [sabit|gizli] [dikey|yatay]   (arguman yoksa dosyalara bakar)
+#
+# EN: keeps windows from going under the dock when it is pinned ("sabit") by editing
+#     reserved_area in your Hyprland Lua monitor config. Point DOCK_MONITORS_LUA at the
+#     file that contains your reserved_area line. If the file doesn't exist this does nothing.
+MON="${DOCK_MONITORS_LUA:-$HOME/.config/hypr/configs/monitors.lua}"
+BAR="$(cat "$HOME/.config/quickshell/bar-choice" 2>/dev/null)"
+MOD="${1:-$(cat "$HOME/.local/share/quickshell/dock-mod" 2>/dev/null)}"
+YON="${2:-$(cat "$HOME/.local/share/quickshell/dock-yon" 2>/dev/null)}"
+
+BOTTOM=0
+if [ "$BAR" = "dock" ]; then
+    TOP=0; LEFT=0
+    if [ "$MOD" = "sabit" ]; then
+        if [ "$YON" = "yatay" ]; then BOTTOM=60; else LEFT=45; fi
+    fi
+else
+    TOP=45; LEFT=0
+fi
+YENI="reserved_area = { top = $TOP, bottom = $BOTTOM, left = $LEFT, right = 0 },"
+
+[ -f "$MON" ] || exit 0
+exec 9>"${XDG_RUNTIME_DIR:-/tmp}/dock-reserve.lock"
+flock 9
+# zaten ayniysa dokunma (gereksiz reload olmasin)
+if grep "reserved_area" "$MON" | grep -qvF "$YENI"; then
+    sed -i -E "s/reserved_area[[:space:]]*=[[:space:]]*\{[^}]*\},?/$YENI/" "$MON"
+    hyprctl reload >/dev/null 2>&1
+fi
