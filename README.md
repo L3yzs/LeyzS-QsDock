@@ -10,6 +10,7 @@ the screen. Every accent color comes from your wallpaper.
 <p align="center">
   <img src="assets/vertical.png" width="49%" alt="Vertical dock">
   <img src="assets/horizontal.png" width="49%" alt="Horizontal dock">
+  <img src="assets/media.png" width="360" alt="QsDock media player">
 </p>
 
 ## Features
