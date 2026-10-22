@@ -7,7 +7,10 @@ stretches into a panel: wallpapers, apps, network, notifications, battery, sound
 dashboard. Double-click the Arch icon and it slides down and lies flat along the bottom of
 the screen. Every accent color comes from your wallpaper.
 
-<!-- add your video / screenshot here, e.g. ![QsDock](assets/preview.gif) -->
+<p align="center">
+  <img src="assets/vertical.png" width="49%" alt="Vertical dock">
+  <img src="assets/horizontal.png" width="49%" alt="Horizontal dock">
+</p>
 
 ## Features
 
