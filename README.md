@@ -12,6 +12,10 @@ the screen. Every accent color comes from your wallpaper.
   <img src="assets/horizontal.png" width="49%" alt="Horizontal dock">
 </p>
 
+<p align="center">
+  🎬 <a href="https://www.reddit.com/r/unixporn/s/njcBbOKPRu"><b>Video of the full dock in action (r/unixporn)</b></a>
+</p>
+
 ## Features
 
 - **Vertical or horizontal:** double-click the Arch icon to switch. Choose auto-hide or always visible.
